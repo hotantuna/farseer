@@ -88,5 +88,6 @@ LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
   });
 };
 
+
 // Set the entire module to our emitter.
 module.exports = LogWatcher;
