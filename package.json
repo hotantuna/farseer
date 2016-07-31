@@ -28,5 +28,8 @@
     "deck tracker"
   ],
   "author": "Chevex",
-  "license": "ISC"
+  "license": "ISC",
+  "engines": {
+    "node": "5.1.1"
+  }
 }
