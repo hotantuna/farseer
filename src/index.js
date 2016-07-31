@@ -2,39 +2,21 @@ import { EventEmitter } from 'events';
 import util from 'util';
 import fs from 'fs';
 import path from 'path';
-import os from 'os';
 import extend from 'extend';
 
+import ParserState from './parser-state';
 import findPlayerName from './find-player-name';
 import newPlayerIds from './new-player-ids';
 import handleZoneChanges from './handle-zone-changes';
 import handleGameOver from './handle-game-over';
-
-var defaultOptions = {
-  endOfLineChar: os.EOL
-};
-
 import setUpLogger from './set-up-debugger';
-const log = setUpLogger();
+import getDefaultOptions from './default-options';
 
-// Determine the default location of the config and log files.
-if (/^win/.test(os.platform())) {
-  log.main('Windows platform detected.');
-  var programFiles = 'Program Files';
-  if (/64/.test(os.arch())) {
-    programFiles += ' (x86)';
-  }
-  defaultOptions.logFile = path.join('C:', programFiles, 'Hearthstone', 'Hearthstone_Data', 'output_log.txt');
-  defaultOptions.configFile = path.join(process.env.LOCALAPPDATA, 'Blizzard', 'Hearthstone', 'log.config');
-} else {
-  log.main('OS X platform detected.');
-  defaultOptions.logFile = path.join(process.env.HOME, 'Library', 'Logs', 'Unity', 'Player.log');
-  defaultOptions.configFile = path.join(process.env.HOME, 'Library', 'Preferences', 'Blizzard', 'Hearthstone', 'log.config');
-}
+const log = setUpLogger();
 
 // The watcher is an event emitter so we can emit events based on what we parse in the log.
 function LogWatcher(options) {
-    this.options = extend({}, defaultOptions, options);
+    this.options = extend({}, getDefaultOptions(log), options);
 
     log.main('config file path: %s', this.options.configFile);
     log.main('log file path: %s', this.options.logFile);
@@ -93,7 +75,6 @@ LogWatcher.prototype.executor = function (line, state) {
   return state;
 }
 
-
 LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
   var self = this;
 
@@ -106,17 +87,6 @@ LogWatcher.prototype.parseBuffer = function (buffer, parserState) {
     parserState = self.executor(line, parserState);
   });
 };
-
-function ParserState() {
-  this.reset();
-}
-
-ParserState.prototype.reset = function () {
-  this.players = [];
-  this.playerCount = 0;
-  this.gameOverCount = 0;
-};
-
 
 // Set the entire module to our emitter.
 module.exports = LogWatcher;
