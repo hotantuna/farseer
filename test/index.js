@@ -1,23 +1,23 @@
-var chai = require('chai');
-var expect = chai.expect;
-var sinon = require('sinon');
-var sinonChai = require('sinon-chai');
+import chai from 'chai';
+import sinon from 'sinon';
+import sinonChai from 'sinon-chai';
+const expect = chai.expect;
 chai.should();
 chai.use(sinonChai);
 
-var LogWatcher = require('../src/index');
-var findPlayerName = require('../src/find-player-name');
-var newPlayerIds = require('../src/new-player-ids');
-var handleZoneChanges = require('../src/handle-zone-changes');
-var handleGameOver = require('../src/handle-game-over');
-var os = require('os');
+import LogWatcher from '../src/index';
+import findPlayerName from '../src/find-player-name';
+import newPlayerIds from '../src/new-player-ids';
+import handleZoneChanges from '../src/handle-zone-changes';
+import handleGameOver from '../src/handle-game-over';
 
-const fs = require('fs');
-const readline = require('readline');
+import os from 'os';
+import fs from 'fs';
+import readline from 'readline';
 
 describe('hearthstone-log-watcher', function () {
-
-  var sandbox, log, emit;
+  let sandbox, log, emit;
+  
   beforeEach(function () {
     sandbox = sinon.sandbox.create();
     log = { zoneChange: sandbox.spy(), gameStart: sandbox.spy(), gameOver: sandbox.spy() };

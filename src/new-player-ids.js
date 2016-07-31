@@ -1,4 +1,4 @@
-var newPlayerIds = function (line, players) {
+export default function (line, players) {
   var findEntityId = function (arr, value) {
     return arr.find(function(element) {
       return element.entityId === value;
@@ -20,5 +20,3 @@ var newPlayerIds = function (line, players) {
 
   return players;
 }
-
-module.exports = newPlayerIds;

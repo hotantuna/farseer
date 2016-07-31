@@ -1,4 +1,4 @@
-var findPlayerName = function (line, players) {
+export default function (line, players) {
   // Check for players entering play and track their team IDs.
   //
   // 2016-07-14 23:07:34.876: [Zone] ZoneChangeList.ProcessChanges() - processing index=66 change=powerTask=[power=[type=TAG_CHANGE entity=[id=2 cardId= name=artaios] tag=PLAYSTATE value=PLAYING] complete=False] entity=artaios srcZoneTag=INVALID srcPos= dstZoneTag=INVALID dstPos=
@@ -17,5 +17,3 @@ var findPlayerName = function (line, players) {
 
   return players;
 };
-
-module.exports = findPlayerName;

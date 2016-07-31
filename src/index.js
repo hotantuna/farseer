@@ -14,14 +14,8 @@ var defaultOptions = {
   endOfLineChar: os.EOL
 };
 
-var debug = require('debug');
-// Define some debug logging functions for easy and readable debug messages.
-var log = {
-  main: debug('HLW'),
-  gameStart: debug('HLW:game-start'),
-  zoneChange: debug('HLW:zone-change'),
-  gameOver: debug('HLW:game-over')
-};
+import setUpLogger from './set-up-debugger';
+const log = setUpLogger();
 
 // Determine the default location of the config and log files.
 if (/^win/.test(os.platform())) {

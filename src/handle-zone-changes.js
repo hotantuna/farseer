@@ -1,4 +1,4 @@
-var handleZoneChanges = function (line, parserState, emit, log) {
+export default function (line, parserState, emit, log) {
   // Check if a card is changing zones.
   var zoneChangeRegex = /\[Zone\] ZoneChangeList.ProcessChanges\(\) - id=\d* local=.* \[name=(.*) id=(\d*) zone=.* zonePos=\d* cardId=(.*) player=(\d)\] zone from ?(FRIENDLY|OPPOSING)? ?(.*)? -> ?(FRIENDLY|OPPOSING)? ?(.*)?$/
   if (zoneChangeRegex.test(line)) {
@@ -35,5 +35,3 @@ var handleZoneChanges = function (line, parserState, emit, log) {
 
   return parserState;
 }
-
-module.exports = handleZoneChanges

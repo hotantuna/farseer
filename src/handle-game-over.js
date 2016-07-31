@@ -1,4 +1,4 @@
-var handleGameOver = function (line, parserState, emit, log) {
+export default function (line, parserState, emit, log) {
   // Check if the game is over.
   var gameOverRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)$/;
   if (gameOverRegex.test(line)) {
@@ -20,5 +20,3 @@ var handleGameOver = function (line, parserState, emit, log) {
 
   return parserState;
 };
-
-module.exports = handleGameOver;
