@@ -17,7 +17,7 @@ import readline from 'readline';
 
 describe('hearthstone-log-watcher', function () {
   let sandbox, log, emit;
-  
+
   beforeEach(function () {
     sandbox = sinon.sandbox.create();
     log = { zoneChange: sandbox.spy(), gameStart: sandbox.spy(), gameOver: sandbox.spy() };
@@ -29,13 +29,6 @@ describe('hearthstone-log-watcher', function () {
   });
 
   describe('constructor', function () {
-
-    it('should configure default options when none are passed in.', function () {
-      var logWatcher = new LogWatcher();
-      logWatcher.should.have.property('options');
-      logWatcher.options.should.have.property('logFile');
-      logWatcher.options.should.have.property('configFile');
-    });
 
     it('should override the options with passed in values.', function () {
       var logFile = __dirname + '/artifacts/dummy.log';
@@ -54,7 +47,13 @@ describe('hearthstone-log-watcher', function () {
   describe('instance', function () {
 
     it ('should allow the watcher to be started and stopped.', function () {
-      var logWatcher = new LogWatcher();
+      var logFile = __dirname + '/artifacts/dummy.log';
+      var configFile = __dirname + '/artifacts/dummy.config';
+      var logWatcher = new LogWatcher({
+        logFile: logFile,
+        configFile: configFile
+      });
+
       logWatcher.should.have.property('start').which.is.a('function');
       logWatcher.should.have.property('stop').which.is.a('function');
       logWatcher.should.not.have.ownProperty('stop');
