@@ -16,12 +16,19 @@ import fs from 'fs';
 import readline from 'readline';
 
 describe('hearthstone-log-watcher', function () {
-  let sandbox, log, emit;
+  let sandbox, log, emit, logWatcher, logFile, configFile;
 
   beforeEach(function () {
     sandbox = sinon.sandbox.create();
     log = { zoneChange: sandbox.spy(), gameStart: sandbox.spy(), gameOver: sandbox.spy() };
     emit = sandbox.spy();
+
+    logFile = __dirname + '/artifacts/dummy.log';
+    configFile = __dirname + '/artifacts/dummy.config';
+    logWatcher = new LogWatcher({
+      logFile: logFile,
+      configFile: configFile
+    });
   });
 
   afterEach(function () {
@@ -29,31 +36,15 @@ describe('hearthstone-log-watcher', function () {
   });
 
   describe('constructor', function () {
-
     it('should override the options with passed in values.', function () {
-      var logFile = __dirname + '/artifacts/dummy.log';
-      var configFile = __dirname + '/artifacts/dummy.config';
-      var logWatcher = new LogWatcher({
-        logFile: logFile,
-        configFile: configFile
-      });
       logWatcher.should.have.property('options');
       logWatcher.options.should.have.property('logFile', logFile);
       logWatcher.options.should.have.property('configFile', configFile);
     });
-
   });
 
   describe('instance', function () {
-
     it ('should allow the watcher to be started and stopped.', function () {
-      var logFile = __dirname + '/artifacts/dummy.log';
-      var configFile = __dirname + '/artifacts/dummy.config';
-      var logWatcher = new LogWatcher({
-        logFile: logFile,
-        configFile: configFile
-      });
-
       logWatcher.should.have.property('start').which.is.a('function');
       logWatcher.should.have.property('stop').which.is.a('function');
       logWatcher.should.not.have.ownProperty('stop');
@@ -70,7 +61,6 @@ describe('hearthstone-log-watcher', function () {
   describe('executor', function () {
     it('parses a log file', function (done) {
       this.timeout(250000);
-      var logWatcher = new LogWatcher();
       logWatcher.emit = sandbox.spy();
       var parserState = { players: [], playerCount: 0, gameOverCount: 0, reset: sandbox.spy() };
       var expectedState = {
