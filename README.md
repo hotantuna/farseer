@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/gregstewart/hearthstone-log-watcher.svg?style=shield)](https://circleci.com/gh/gregstewart/hearthstone-log-watcher)
+
 # Hearthstone Log Watcher
 
 This module is simple. It takes care of the low-level monitoring of the Hearthstone log file and emits events based on what happens in the log file. Use this module if you want to build your own Hearthstone deck tracker and don't want to do the work of parsing through the nasty log file yourself.
