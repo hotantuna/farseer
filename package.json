@@ -23,7 +23,7 @@
     "prepublish": "npm run compile",
     "start": "node bootstrap",
     "test": "NODE_ENV=test mocha",
-    "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --verbose --include '**/*.js' --exclude './lib/**' ./node_modules/.bin/_mocha test"
+    "coverage": "./node_modules/.bin/babel-node ./node_modules/.bin/isparta cover --verbose --include '**/*.js' --exclude './lib/**' --exclude './example.js' --exclude './bootstrap.js' ./node_modules/.bin/_mocha test"
   },
   "keywords": [
     "hearthstone",
