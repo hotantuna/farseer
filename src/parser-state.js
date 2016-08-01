@@ -1,11 +1,10 @@
-function ParserState() {
-  this.reset();
+export default class {
+  constructor () {
+    this.reset();
+  }
+  reset () {
+    this.players = [];
+    this.playerCount = 0;
+    this.gameOverCount = 0;
+  }
 }
-
-ParserState.prototype.reset = function () {
-  this.players = [];
-  this.playerCount = 0;
-  this.gameOverCount = 0;
-};
-
-module.exports = ParserState;
