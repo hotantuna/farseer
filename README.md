@@ -1,22 +1,33 @@
-[![Circle CI](https://circleci.com/gh/gregstewart/hearthstone-log-watcher.svg?style=shield)](https://circleci.com/gh/gregstewart/hearthstone-log-watcher)
+[![Circle CI](https://circleci.com/gh/gregstewart/farseer.svg?style=shield)](https://circleci.com/gh/gregstewart/farseer)
 
-# Hearthstone Log Watcher
+# Farseer
 
 This module is simple. It takes care of the low-level monitoring of the Hearthstone log file and emits events based on what happens in the log file. Use this module if you want to build your own Hearthstone deck tracker and don't want to do the work of parsing through the nasty log file yourself.
 
+## Credits
+
+This project is based on [chevex-archived/hearthstone-log-watcher](https://github.com/chevex-archived/hearthstone-log-watcher); however it now appears to be unmaintained and in order to fix a parsing issue that appeared in [patch 5.2](http://hearthstone.gamepedia.com/Patch_5.2.0.13619) I decided to for this module. I had reached to the original author offering to take over the maintenance, but I haven't heard back from him yet. If in future he should, I will happily merge things back into the old module.
+
+I also took the opportunity to refactor the code and migrate it to ES6.
+
+All credit for the base log file reading and initial parsing methods goes to the authors of the [original fork](https://github.com/chevex-archived/hearthstone-log-watcher).
+
+## Why Farseer?
+All combinations of hearthstone-watcher/logger/observer were taken, so I chose to use [a card](http://www.hearthhead.com/card=1651/earthen-ring-farseer) from the standard deck as the inspiration so that I could publish the module on NPM.
+
 ## Usage
 
-> $ npm install hearthstone-log-watcher
+> $ npm install farseer
 
 ```javascript
-var LogWatcher = require('hearthstone-log-watcher');
-var logWatcher = new LogWatcher();
+var Farseer = require('farseer');
+var farseer = new Farseer();
 
-logWatcher.on('zone-change', function (data) {
+farseer.on('zone-change', function (data) {
   console.log(data.cardName + ' has moved from ' + data.fromTeam + ' ' + data.fromZone + ' to ' + data.toTeam + ' ' + data.toZone);
 });
 
-logWatcher.start();
+farseer.start();
 ```
 
 Here's an example of the output from the above script:
@@ -29,14 +40,14 @@ Here's a little demo video as well:
 
 ### Parse an existing log file
 
-`logWatcher.start()` begins reading any updates to the Hearthstone log file that occur after it has begun watching. If you need to parse a log from the beginning, you can use `parseBuffer`.
+`farseer.start()` begins reading any updates to the Hearthstone log file that occur after it has begun watching. If you need to parse a log from the beginning, you can use `parseBuffer`.
 
 ```javascript
 var fs = require('fs');
 
 fs.readFile('./my-old-player-log.log', function(err, buffer) {
   if (err) return console.error(err);
-  logWatcher.parseBuffer(buffer);
+  farseer.parseBuffer(buffer);
 });
 ```
 
