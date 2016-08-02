@@ -1,6 +1,6 @@
 {
   "name": "farseer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This simple module monitors the Hearthstone log file and emits events based on important events from the log.",
   "main": "lib/index.js",
   "dependencies": {
@@ -29,23 +29,28 @@
     "log watcher"
   ],
   "author": "Greg Stewart <gregs@tcias.co.uk>",
-  "contributors": [{
-    "name": "Chevex",
-    "url" : "https://github.com/chevex"
-  },
-  {
-    "name": "EvilOatmeal",
-    "url" : "https://github.com/EvilOatmeal"
-  },{
-    "name": "keis",
-    "url" : "https://github.com/keis"
-  },{
-    "name": "Tidwell",
-    "url" : "https://github.com/Tidwell"
-  },{
-    "name": "kevinfjbecker",
-    "url" : "https://github.com/kevinfjbecker"
-  }],
+  "contributors": [
+    {
+      "name": "Chevex",
+      "url": "https://github.com/chevex"
+    },
+    {
+      "name": "EvilOatmeal",
+      "url": "https://github.com/EvilOatmeal"
+    },
+    {
+      "name": "keis",
+      "url": "https://github.com/keis"
+    },
+    {
+      "name": "Tidwell",
+      "url": "https://github.com/Tidwell"
+    },
+    {
+      "name": "kevinfjbecker",
+      "url": "https://github.com/kevinfjbecker"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gregstewart/farseer"
