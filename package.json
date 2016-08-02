@@ -46,6 +46,13 @@
     "name": "kevinfjbecker",
     "url" : "https://github.com/kevinfjbecker"
   }],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gregstewart/farseer"
+  },
+  "bugs": {
+    "url": "https://github.com/gregstewart/farseer/issues"
+  },
   "license": "ISC",
   "engines": {
     "node": "5.1.1"
