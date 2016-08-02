@@ -1,6 +1,6 @@
-var LogWatcher = require('./lib/index.js').default;
-var lw = new LogWatcher();
-lw.on('game-start', console.log.bind(console, 'game-start'));
-lw.on('game-over', console.log.bind(console, 'game-over:'));
-lw.on('zone-change', console.log.bind(console, 'zone-change:'));
-lw.start();
+var Farseer = require('./lib/index.js').default;
+var farseer = new Farseer();
+farseer.on('game-start', console.log.bind(console, 'game-start'));
+farseer.on('game-over', console.log.bind(console, 'game-over:'));
+farseer.on('zone-change', console.log.bind(console, 'zone-change:'));
+farseer.start();
