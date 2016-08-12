@@ -12,7 +12,7 @@
   "devDependencies": {
     "babel-cli": "^6.10.1",
     "chai": "^3.2.0",
-    "mocha": "^2.5.3",
+    "mocha": "^3.0.2",
     "mocha-junit-reporter": "^1.11.1",
     "sinon": "^1.17.4",
     "sinon-chai": "^2.8.0"
@@ -29,23 +29,28 @@
     "log watcher"
   ],
   "author": "Greg Stewart <gregs@tcias.co.uk>",
-  "contributors": [{
-    "name": "Chevex",
-    "url" : "https://github.com/chevex"
-  },
-  {
-    "name": "EvilOatmeal",
-    "url" : "https://github.com/EvilOatmeal"
-  },{
-    "name": "keis",
-    "url" : "https://github.com/keis"
-  },{
-    "name": "Tidwell",
-    "url" : "https://github.com/Tidwell"
-  },{
-    "name": "kevinfjbecker",
-    "url" : "https://github.com/kevinfjbecker"
-  }],
+  "contributors": [
+    {
+      "name": "Chevex",
+      "url": "https://github.com/chevex"
+    },
+    {
+      "name": "EvilOatmeal",
+      "url": "https://github.com/EvilOatmeal"
+    },
+    {
+      "name": "keis",
+      "url": "https://github.com/keis"
+    },
+    {
+      "name": "Tidwell",
+      "url": "https://github.com/Tidwell"
+    },
+    {
+      "name": "kevinfjbecker",
+      "url": "https://github.com/kevinfjbecker"
+    }
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/gregstewart/farseer"
