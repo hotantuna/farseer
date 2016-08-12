@@ -20,7 +20,7 @@ All combinations of hearthstone-watcher/logger/observer were taken, so I chose t
 > $ npm install farseer
 
 ```javascript
-var Farseer = require('farseer');
+var Farseer = require('farseer').default;
 var farseer = new Farseer();
 
 farseer.on('zone-change', function (data) {
