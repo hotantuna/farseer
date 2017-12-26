@@ -1,6 +1,6 @@
 export default function (line, parserState, emit, log) {
   // Check if the game is over.
-  var gameOverRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED)$/;
+  var gameOverRegex = /\[Power\] GameState\.DebugPrintPower\(\) - TAG_CHANGE Entity=(.*) tag=PLAYSTATE value=(LOST|WON|TIED|CONCEDED)\s{0,}$/;
   if (gameOverRegex.test(line)) {
     var parts = gameOverRegex.exec(line);
     // Set the status for the appropriate player.
