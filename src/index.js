@@ -25,6 +25,9 @@ export default class extends EventEmitter {
 
     // Copy local config file to the correct location.
     // We're just gonna do this every time.
+    if (__dirname.startsWith('..')) {
+      __dirname = __dirname.substr(3)
+    }
     var localConfigFile = path.join(__dirname, './log.config');
     if (this.options.customDir) {
       localConfigFile = path.join(this.options.customDir, './log.config')
