@@ -32,7 +32,6 @@ export default class extends EventEmitter {
     if (this.options.customDir) {
       localConfigFile = path.join(this.options.customDir, './log.config')
     }
-    console.log(localConfigFile)
     fs.createReadStream(localConfigFile).pipe(fs.createWriteStream(this.options.configFile));
     log.main('Copied log.config file to force Hearthstone to write to its log file.');
   }
